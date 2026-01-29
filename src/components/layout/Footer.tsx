@@ -69,11 +69,11 @@ export function Footer() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>
                 <span className="text-foreground font-medium">WhatsApp:</span>{" "}
-                +91 XXXXXXXXXX
+                +91 9810695338
               </p>
               <p>
                 <span className="text-foreground font-medium">Email:</span>{" "}
-                contact@conceptslearning.com
+                conceptstuitions@gmail.com
               </p>
               <p>
                 <span className="text-foreground font-medium">Address:</span>{" "}

@@ -1,7 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Award, BookOpen, Clock } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+// Import faculty images
+import facultyManoj from "@/assets/faculty-manoj.jpg";
+import facultyAshish from "@/assets/faculty-ashish.jpg";
+import facultyTejus from "@/assets/faculty-tejus.jpg";
+import facultySmarth from "@/assets/faculty-smarth.jpg";
 
 interface FacultyMember {
   name: string;
@@ -28,6 +41,7 @@ const faculty: FacultyMember[] = [
     experience: "3+ years",
     subjects: "Physics",
     impression: "Strong conceptual clarity, consistent score improvement",
+    image: facultyManoj,
   },
   {
     name: "Ashish Singh",
@@ -35,6 +49,7 @@ const faculty: FacultyMember[] = [
     experience: "4+ years",
     subjects: "Chemistry",
     impression: "Strong fundamentals + smart shortcuts + crisp problem-solving approach",
+    image: facultyAshish,
   },
   {
     name: "Tejus",
@@ -42,6 +57,7 @@ const faculty: FacultyMember[] = [
     experience: "5+ years",
     subjects: "Mathematics",
     impression: "Step-by-step problem solving + strong focus on fundamentals + speed methods",
+    image: facultyTejus,
   },
   {
     name: "Priyanka",
@@ -70,10 +86,13 @@ const faculty: FacultyMember[] = [
     experience: "5+ years",
     subjects: "Mathematics",
     impression: "JEE problem solving + test strategy + time management techniques",
+    image: facultySmarth,
   },
 ];
 
 export default function Faculty() {
+  const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
+
   return (
     <Layout>
       <section className="section">
@@ -92,10 +111,23 @@ export default function Faculty() {
                 className="faculty-card animate-scale-in"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
-                {/* Avatar placeholder */}
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                  <GraduationCap className="w-12 h-12 text-primary/60" />
-                </div>
+                {/* Avatar or Image */}
+                {member.image ? (
+                  <div
+                    className="w-32 h-32 rounded-2xl overflow-hidden border border-primary/20 flex-shrink-0 cursor-pointer transition-transform hover:scale-105"
+                    onClick={() => setSelectedFaculty(member)}
+                  >
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-32 h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                    <GraduationCap className="w-12 h-12 text-primary/60" />
+                  </div>
+                )}
 
                 <div className="flex-1 min-w-0">
                   <h3 className="text-xl font-bold mb-3">{member.name}</h3>
@@ -152,7 +184,7 @@ export default function Faculty() {
               </Button>
               <Button variant="outline" className="border-success text-success hover:bg-success/10" asChild>
                 <a
-                  href="https://wa.me/91XXXXXXXXXX?text=Hi%20Concepts%20Learning,%20I%20want%20to%20know%20faculty%20and%20batch%20details."
+                  href="https://wa.me/919810695338?text=Hi%20Concepts%20Learning,%20I%20want%20to%20know%20faculty%20and%20batch%20details."
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -163,6 +195,27 @@ export default function Faculty() {
           </div>
         </div>
       </section>
+
+      {/* Image Popup Dialog */}
+      <Dialog open={!!selectedFaculty} onOpenChange={() => setSelectedFaculty(null)}>
+        <DialogContent className="max-w-md p-0 overflow-hidden">
+          <DialogHeader className="p-4 pb-0">
+            <DialogTitle>{selectedFaculty?.name}</DialogTitle>
+          </DialogHeader>
+          {selectedFaculty?.image && (
+            <div className="p-4 pt-2">
+              <img
+                src={selectedFaculty.image}
+                alt={selectedFaculty.name}
+                className="w-full rounded-lg object-cover"
+              />
+              <p className="text-sm text-muted-foreground mt-3">
+                {selectedFaculty.subjects} • {selectedFaculty.experience} experience
+              </p>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 }
