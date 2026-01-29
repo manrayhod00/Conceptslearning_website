@@ -83,7 +83,7 @@ export default function Contact() {
               <div className="flex flex-wrap gap-3 mb-6">
                 <Button className="bg-success hover:bg-success/90" asChild>
                   <a
-                    href="https://wa.me/91XXXXXXXXXX?text=Hi%20Concepts%20Learning,%20I%20want%20to%20book%20a%20demo%20class."
+                    href="https://wa.me/919810695338?text=Hi%20Concepts%20Learning,%20I%20want%20to%20book%20a%20demo%20class."
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -92,7 +92,7 @@ export default function Contact() {
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
-                  <a href="tel:+91XXXXXXXXXX">
+                  <a href="tel:+919810695338">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Now
                   </a>
@@ -118,7 +118,7 @@ export default function Contact() {
                   <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="font-medium">Email:</span>{" "}
-                    <span className="text-muted-foreground">(Add email)</span>
+                    <span className="text-muted-foreground">conceptstuitions@gmail.com</span>
                   </div>
                 </div>
               </div>
