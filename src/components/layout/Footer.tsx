@@ -66,7 +66,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="font-semibold mb-4">Get in Touch</h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-3 text-sm text-muted-foreground">
               <p>
                 <span className="text-foreground font-medium">WhatsApp:</span>{" "}
                 +91 9810695338
@@ -75,10 +75,14 @@ export function Footer() {
                 <span className="text-foreground font-medium">Email:</span>{" "}
                 conceptstuitions@gmail.com
               </p>
-              <p>
-                <span className="text-foreground font-medium">Address:</span>{" "}
-                (Add your address)
-              </p>
+              <div>
+                <span className="text-foreground font-medium">Rajajinagar:</span>{" "}
+                <span>3rd Floor, 106/9, Besides NPS RNR</span>
+              </div>
+              <div>
+                <span className="text-foreground font-medium">Yeshwanthpur:</span>{" "}
+                <span>1F2 Srivari Enclave, Beside Sparsh Hospital</span>
+              </div>
             </div>
           </div>
         </div>

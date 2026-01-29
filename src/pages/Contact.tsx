@@ -103,15 +103,22 @@ export default function Contact() {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-medium">Address:</span>{" "}
-                    <span className="text-muted-foreground">(Add your address)</span>
+                    <span className="font-medium">Centre 1 - Rajajinagar:</span>{" "}
+                    <span className="text-muted-foreground">3rd Floor, 106/9, Besides NPS RNR, Rajajinagar</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-medium">Centre 2 - Yeshwanthpur:</span>{" "}
+                    <span className="text-muted-foreground">1F2 Srivari Enclave, Beside Sparsh Hospital, Yeshwanthpur</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="font-medium">Timings:</span>{" "}
-                    <span className="text-muted-foreground">(Add timings)</span>
+                    <span className="text-muted-foreground">Mon-Sat: 9 AM - 8 PM</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
