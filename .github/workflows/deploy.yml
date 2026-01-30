@@ -28,7 +28,9 @@ jobs:
           cache: npm
 
       - name: Install
-        run: npm ci
+        # Lovable projects may have package-lock.json out of sync with package.json.
+        # `npm ci` fails in that case; `npm install` will still install and allow builds.
+        run: npm install
 
       - name: Build
         run: npm run build
