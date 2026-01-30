@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, BookOpen } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -23,18 +24,8 @@ export function Header() {
       <div className="container">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <BookOpen className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <div className="text-xs font-extrabold text-muted-foreground tracking-wider">
-                CONCEPTS
-              </div>
-              <div className="text-lg font-bold -mt-1 group-hover:text-primary transition-colors">
-                Learning
-              </div>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img src={logo} alt="Concepts Coaching" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
