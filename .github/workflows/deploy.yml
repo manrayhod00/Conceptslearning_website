@@ -28,8 +28,6 @@ jobs:
           cache: npm
 
       - name: Install
-        # Lovable projects may have package-lock.json out of sync with package.json.
-        # `npm ci` fails in that case; `npm install` will still install and allow builds.
         run: npm install
 
       - name: Build
@@ -43,6 +41,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy
+        id: deployment
         uses: actions/deploy-pages@v4
