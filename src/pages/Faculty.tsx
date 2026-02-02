@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -92,6 +92,14 @@ const faculty: FacultyMember[] = [
 
 export default function Faculty() {
   const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
+
+  useEffect(() => {
+    document.title = "Expert Faculty | Concepts Learning - JEE & NEET Coaching";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "Meet our experienced IIT and IISc alumni faculty. Expert teachers for Physics, Chemistry, and Mathematics with proven track records.");
+    }
+  }, []);
 
   return (
     <Layout>

@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Users, Target, BookOpen, Award } from "lucide-react";
 
 export default function AboutUs() {
+  useEffect(() => {
+    document.title = "About Us | Concepts Learning - JEE & NEET Coaching";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "Learn about Concepts Learning - Bengaluru's trusted JEE & NEET coaching since 2010. Small batches, expert faculty, and personalized mentoring.");
+    }
+  }, []);
   return (
     <Layout>
       <section className="section">

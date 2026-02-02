@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -28,6 +29,14 @@ const features = [
 ];
 
 export default function MockPlatform() {
+  useEffect(() => {
+    document.title = "JEE Mock Test Platform | Concepts Learning Bengaluru";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "Practice with our exam-like JEE mock test platform. Real interface, analytics, and performance tracking to boost your exam readiness.");
+    }
+  }, []);
+
   return (
     <Layout>
       <section className="section">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -104,6 +104,14 @@ const testSchedule = [
 
 export default function Courses() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+
+  useEffect(() => {
+    document.title = "JEE & NEET Courses | Concepts Learning Bengaluru";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "Explore our JEE, NEET, and board exam courses. Grade 8-12 preparation with expert faculty, structured material, and regular testing.");
+    }
+  }, []);
 
   return (
     <Layout>

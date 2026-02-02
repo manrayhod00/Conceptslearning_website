@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -40,6 +40,14 @@ const resultsData: Record<string, {
 
 export default function Results() {
   const [activeYear, setActiveYear] = useState("2025");
+
+  useEffect(() => {
+    document.title = "JEE & NEET Results | Concepts Learning Bengaluru";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "See our students' JEE Main, JEE Advanced & NEET results. Top percentiles, rank improvements, and success stories from Concepts Learning.");
+    }
+  }, []);
 
   return (
     <Layout>
