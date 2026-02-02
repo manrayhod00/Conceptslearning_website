@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -36,6 +37,14 @@ const features = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Best JEE & NEET Coaching in Bengaluru | Concepts Learning";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute("content", "Concepts Learning is a results-driven JEE & NEET coaching institute in Bengaluru. Small batches, expert faculty, and concept-first teaching.");
+    }
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
