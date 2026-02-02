@@ -9,6 +9,7 @@ import Faculty from "./pages/Faculty";
 import Results from "./pages/Results";
 import MockPlatform from "./pages/MockPlatform";
 import Contact from "./pages/Contact";
+import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,8 @@ const App = () => (
           <Route path="/results" element={<Results />} />
           <Route path="/mock-platform" element={<MockPlatform />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/about" element={<AboutUs />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
