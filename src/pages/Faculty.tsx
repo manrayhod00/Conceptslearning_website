@@ -15,6 +15,8 @@ import facultyManoj from "@/assets/faculty-manoj.jpg";
 import facultyAshish from "@/assets/faculty-ashish.jpg";
 import facultyTejus from "@/assets/faculty-tejus.jpg";
 import facultySmarth from "@/assets/faculty-smarth.jpg";
+import facultyAnuja from "@/assets/faculty-anuja.jpg";
+import facultyPriyanka from "@/assets/faculty-priyanka.jpg";
 
 interface FacultyMember {
   name: string;
@@ -34,6 +36,7 @@ const faculty: FacultyMember[] = [
     role: "Founder, Concepts Learning",
     subjects: "Mathematics, Chemistry",
     impression: "Clear explanations, friendly mentoring, and strong exam-oriented practice",
+    image: facultyAnuja,
   },
   {
     name: "Manoj Rathod",
@@ -65,6 +68,7 @@ const faculty: FacultyMember[] = [
     experience: "6+ years",
     subjects: "Science",
     impression: "Better conceptual clarity + improved exam writing + consistent results",
+    image: facultyPriyanka,
   },
   {
     name: "Soni",
@@ -72,13 +76,6 @@ const faculty: FacultyMember[] = [
     experience: "4+ years",
     subjects: "Science & Accounts",
     impression: "Real-life examples + practice-driven worksheets + revision checkpoints",
-  },
-  {
-    name: "Aditi",
-    qualification: "B.E, M.Tech",
-    experience: "3+ years",
-    subjects: "Mathematics",
-    impression: "Calm explanations + lots of practice + quick doubt resolution",
   },
   {
     name: "Smarth",
