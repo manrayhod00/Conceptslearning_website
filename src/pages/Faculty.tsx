@@ -21,7 +21,7 @@ import facultyPriyanka from "@/assets/faculty-priyanka.jpg";
 interface FacultyMember {
   name: string;
   qualification: string;
-  experience: string;
+  experience?: string;
   subjects: string;
   role?: string;
   impression: string;
@@ -48,24 +48,23 @@ const faculty: FacultyMember[] = [
   },
   {
     name: "Ashish Singh",
-    qualification: "BS-MS (IIT BHU)",
-    experience: "4+ years",
+    qualification: "B.Sc Chemistry (Hons) BHU, M.Sc Kanpur University",
+    experience: "5+ years",
     subjects: "Chemistry",
     impression: "Strong fundamentals + smart shortcuts + crisp problem-solving approach",
     image: facultyAshish,
   },
   {
     name: "Tejus",
-    qualification: "B.Sc (Mathematics), M.Sc (Applied Mathematics)",
-    experience: "5+ years",
+    qualification: "B.Tech (IIT Guwahati)",
+    experience: "8+ years",
     subjects: "Mathematics",
     impression: "Step-by-step problem solving + strong focus on fundamentals + speed methods",
     image: facultyTejus,
   },
   {
     name: "Priyanka",
-    qualification: "B.Sc, B.Ed (Science Education)",
-    experience: "6+ years",
+    qualification: "BE (ECE)",
     subjects: "Science",
     impression: "Better conceptual clarity + improved exam writing + consistent results",
     image: facultyPriyanka,
@@ -144,13 +143,15 @@ export default function Faculty() {
                         <span className="text-muted-foreground">{member.qualification}</span>
                       </div>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <Clock className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <div>
-                        <span className="font-medium">Experience:</span>{" "}
-                        <span className="text-muted-foreground">{member.experience}</span>
+                    {member.experience && (
+                      <div className="flex items-start gap-2">
+                        <Clock className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <span className="font-medium">Experience:</span>{" "}
+                          <span className="text-muted-foreground">{member.experience}</span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                     {member.role && (
                       <div className="flex items-start gap-2">
                         <GraduationCap className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
