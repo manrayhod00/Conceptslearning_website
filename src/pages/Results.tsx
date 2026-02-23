@@ -1,51 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Trophy, TrendingUp, Star, ImageIcon } from "lucide-react";
+import { Trophy, TrendingUp, GraduationCap, MapPin } from "lucide-react";
 
-const years = ["2025", "2024", "2023", "2022"];
+interface Alumni {
+  name: string;
+  college: string;
+  highlight?: boolean;
+}
 
-const resultsData: Record<string, {
-  title: string;
-  description: string;
-  highlights: string[];
-}> = {
-  "2025": {
-    title: "2025 Highlights",
-    description: "Replace this with your actual results, screenshots, and student stories.",
-    highlights: [
-      "Top percentiles: (Add)",
-      "Selections / ranks: (Add)",
-      "Best improvements: (Add)",
-      "Parent testimonials: (Add)",
-    ],
-  },
-  "2024": {
-    title: "2024 Highlights",
-    description: "Add your 2024 results here (ranks, percentiles, screenshots).",
-    highlights: [],
-  },
-  "2023": {
-    title: "2023 Highlights",
-    description: "Add your 2023 results here.",
-    highlights: [],
-  },
-  "2022": {
-    title: "2022 Highlights",
-    description: "Add your 2022 results here.",
-    highlights: [],
-  },
-};
+const featuredAlumni: Alumni[] = [
+  { name: "Anirudh M", college: "BITS, Hyderabad", highlight: true },
+  { name: "Riddhima", college: "NIT, Surat", highlight: true },
+  { name: "Pratheeth", college: "BITS, Goa", highlight: true },
+  { name: "Siddhanth", college: "BITS, Goa", highlight: true },
+  { name: "Yuvan", college: "NIT, Calicut", highlight: true },
+  { name: "Janhavi Aravind", college: "Qualified JEE Advanced · Johns Hopkins University", highlight: true },
+];
+
+const otherColleges = ["VIT", "RV College", "PES University", "SRM"];
 
 export default function Results() {
-  const [activeYear, setActiveYear] = useState("2025");
-
   useEffect(() => {
-    document.title = "JEE & NEET Results | Concepts Learning Bengaluru";
+    document.title = "Our Alumni | Concepts Learning - JEE & NEET Coaching Bengaluru";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "See our students' JEE Main, JEE Advanced & NEET results. Top percentiles, rank improvements, and success stories from Concepts Learning.");
+      metaDescription.setAttribute("content", "Meet our proud alumni placed in BITS, NITs, Johns Hopkins & top engineering colleges. See the success stories from Concepts Learning Bengaluru.");
     }
   }, []);
 
@@ -53,66 +34,65 @@ export default function Results() {
     <Layout>
       <section className="section">
         <div className="container">
-          <div className="mb-10 animate-fade-in">
+          {/* Header */}
+          <div className="mb-12 animate-fade-in">
             <div className="flex items-center gap-2 mb-3">
               <Trophy className="w-5 h-5 text-primary" />
-              <span className="kicker">Achievements</span>
+              <span className="kicker">Our Pride</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Results</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Our Alumni</h1>
             <p className="lead">
-              Year-wise achievements, ranks, percentiles, and improvement stories.
+              Students who trusted us and made it to top institutions across India and abroad.
             </p>
           </div>
 
-          {/* Year Tabs */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {years.map((year) => (
-              <button
-                key={year}
-                onClick={() => setActiveYear(year)}
-                className={`tab-btn ${activeYear === year ? "active" : ""}`}
+          {/* Featured Alumni Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+            {featuredAlumni.map((alumni, index) => (
+              <div
+                key={alumni.name}
+                className="group feature-card relative overflow-hidden animate-scale-in"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                {year}
-              </button>
+                {/* Decorative glow */}
+                <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
+
+                <div className="relative flex flex-col gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <GraduationCap className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-bold">{alumni.name}</h3>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    <span>{alumni.college}</span>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
 
-          {/* Results Content */}
-          <div className="feature-card animate-fade-in" key={activeYear}>
-            <h3 className="text-xl font-bold mb-2">{resultsData[activeYear].title}</h3>
-            <p className="text-muted-foreground mb-6">{resultsData[activeYear].description}</p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {resultsData[activeYear].highlights.length > 0 && (
-                <div>
-                  <ul className="space-y-3">
-                    {resultsData[activeYear].highlights.map((item, index) => (
-                      <li key={index} className="flex items-center gap-3 text-muted-foreground">
-                        <Star className="w-4 h-4 text-primary flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <div className="glass-card p-8 flex items-center justify-center min-h-[200px]">
-                <div className="text-center text-muted-foreground">
-                  <ImageIcon className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                  <p className="text-sm">Results screenshot placeholder</p>
-                </div>
-              </div>
-            </div>
+          {/* Other colleges banner */}
+          <div className="glass-card p-6 mb-10 animate-fade-in">
+            <p className="text-center">
+              <span className="text-muted-foreground">Several students also placed in </span>
+              {otherColleges.map((college, i) => (
+                <span key={college}>
+                  <span className="font-semibold text-primary">{college}</span>
+                  {i < otherColleges.length - 1 && <span className="text-muted-foreground">, </span>}
+                </span>
+              ))}
+              <span className="text-muted-foreground"> & more top institutions.</span>
+            </p>
           </div>
 
           {/* CTA Card */}
-          <div className="feature-card mt-8">
+          <div className="feature-card">
             <div className="flex items-center gap-3 mb-3">
               <TrendingUp className="w-6 h-6 text-primary" />
-              <h3 className="text-xl font-bold">Want similar results?</h3>
+              <h3 className="text-xl font-bold">Want to join this list?</h3>
             </div>
             <p className="text-muted-foreground mb-4">
-              Book a demo class and get a learning plan based on current level and target exam.
+              Book a demo class and get a learning plan based on your current level and target exam.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild>
@@ -120,7 +100,7 @@ export default function Results() {
               </Button>
               <Button variant="outline" className="border-success text-success hover:bg-success/10" asChild>
                 <a
-                  href="https://wa.me/91XXXXXXXXXX?text=Hi%20Concepts%20Learning,%20I%20want%20to%20know%20batch%20availability%20and%20fees."
+                  href="https://wa.me/919810695338?text=Hi%20Concepts%20Learning,%20I%20want%20to%20know%20batch%20availability%20and%20fees."
                   target="_blank"
                   rel="noopener noreferrer"
                 >
