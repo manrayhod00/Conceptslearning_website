@@ -2,20 +2,36 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, 
-  BookOpen, 
-  Target, 
+import {
+  Users,
+  BookOpen,
+  Target,
   ArrowRight,
   Sparkles,
   Trophy,
-  MessageSquare
+  MessageSquare,
+  Medal
 } from "lucide-react";
 
 const toppers = [
   { name: "Meeko", percentile: "99.82", exam: "JEE Main 2025", note: "Top performer • Consistent mocks" },
   { name: "Bruno", percentile: "99.61", exam: "JEE Main 2025", note: "Strong accuracy • Fast solving" },
   { name: "Pepper", percentile: "99.34", exam: "JEE Main 2025", note: "Big jump • Targeted revision" },
+];
+
+interface Grade10Student {
+  name: string;
+  maths?: number;
+  science?: number;
+}
+
+const grade10Highlights: Grade10Student[] = [
+  { name: "Vaishnavi", maths: 100, science: 99 },
+  { name: "Dhanvin",   maths: 100, science: 97 },
+  { name: "Arya",      maths: 98,  science: 98 },
+  { name: "Arnav",     maths: 98,  science: 98 },
+  { name: "Nitya",     maths: 100, science: 96 },
+  { name: "Sachit",    maths: 100, science: 96 },
 ];
 
 const features = [
@@ -151,6 +167,55 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">{topper.name}</h3>
                 <p className="text-sm text-muted-foreground">{topper.note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Grade 10 Board Toppers */}
+      <section className="section">
+        <div className="container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+            <div className="animate-fade-in">
+              <div className="flex items-center gap-2 mb-3">
+                <Medal className="w-5 h-5 text-success" />
+                <span className="kicker">Board Results</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold">Grade 10 Board Toppers · 2025</h2>
+              <p className="lead mt-2">Outstanding scores in Maths &amp; Science from our CBSE batch.</p>
+            </div>
+            <Button variant="ghost" asChild>
+              <Link to="/results#grade10">
+                View all results
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid-3">
+            {grade10Highlights.map((student, index) => (
+              <div
+                key={student.name}
+                className="topper-card animate-scale-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {student.maths !== undefined && (
+                    <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border ${student.maths === 100 ? "bg-success/10 border-success/30 text-success" : "bg-secondary border-border text-muted-foreground"}`}>
+                      <span>Maths</span>
+                      <span className="font-bold text-foreground">{student.maths}</span>
+                    </span>
+                  )}
+                  {student.science !== undefined && (
+                    <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border ${student.science === 100 ? "bg-success/10 border-success/30 text-success" : "bg-secondary border-border text-muted-foreground"}`}>
+                      <span>Science</span>
+                      <span className="font-bold text-foreground">{student.science}</span>
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{student.name}</h3>
+                <p className="text-xs text-muted-foreground">Grade 10 · CBSE 2025</p>
               </div>
             ))}
           </div>
