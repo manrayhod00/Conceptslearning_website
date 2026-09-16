@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { toppers } from "@/data/toppers";
 import { Button } from "@/components/ui/button";
 import {
   Users,
@@ -12,16 +13,6 @@ import {
   MessageSquare,
   Medal
 } from "lucide-react";
-
-const toppers = [
-  { name: "Abhiram", percentile: "98.8", exam: "JEE Main 2026 · NEET 2026", note: "NEET AIR 623 (GN) • AIIMS Bhubaneswar" },
-  { name: "Ranvir Chaudhary", percentile: "98.1", exam: "JEE Main 2026", note: "VNIT Nagpur" },
-  { name: "Judah", percentile: "96", exam: "JEE Main 2026", note: "RVCE Bengaluru • Computer Science" },
-  { name: "Teertha", percentile: "", exam: "JEE Main 2026", note: "RVCE Bengaluru" },
-  { name: "Aishwarya", percentile: "", exam: "JEE Main 2026", note: "SRM University" },
-  { name: "Sajeev", percentile: "", exam: "JEE Main 2026", note: "Manipal Institute of Technology" },
-  { name: "Avyukt", percentile: "", exam: "JEE Main 2026", note: "VIT Vellore" },
-];
 
 interface Grade10Student {
   name: string;

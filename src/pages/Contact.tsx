@@ -10,10 +10,10 @@ import {
   MapPin, 
   Clock, 
   Mail,
-  ChevronDown,
-  Send
+  ChevronDown
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+
+const WHATSAPP_NUMBER = "919810695338";
 
 const faqs = [
   {
@@ -35,7 +35,6 @@ const faqs = [
 ];
 
 export default function Contact() {
-  const { toast } = useToast();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -43,7 +42,6 @@ export default function Contact() {
     course: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     document.title = "Contact Us | Concepts Learning - JEE & NEET Coaching Bengaluru";
@@ -53,20 +51,25 @@ export default function Contact() {
     }
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // The form has no backend: it composes the enquiry and hands it to WhatsApp,
+  // where the parent sends it themselves. Nothing is stored on our side.
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const lines = [
+      "Hi Concepts Learning, I would like to enquire.",
+      "",
+      `Name: ${formData.name.trim()}`,
+      `Phone: ${formData.phone.trim()}`,
+    ];
+    if (formData.course.trim()) lines.push(`Course: ${formData.course.trim()}`);
+    if (formData.message.trim()) lines.push("", formData.message.trim());
 
-    toast({
-      title: "Enquiry submitted!",
-      description: "We'll get back to you within 24 hours.",
-    });
-
-    setFormData({ name: "", phone: "", course: "", message: "" });
-    setIsSubmitting(false);
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (
@@ -143,7 +146,8 @@ export default function Contact() {
             <div className="feature-card" id="enquiry">
               <h3 className="text-xl font-bold mb-2">Enquiry Form</h3>
               <p className="text-muted-foreground text-sm mb-6">
-                Fill out the form and we'll get back to you within 24 hours.
+                Fill this in and tap send — it opens WhatsApp with your enquiry ready
+                to go. We usually reply within a few hours.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -189,15 +193,9 @@ export default function Contact() {
                   />
                 </div>
 
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    "Submitting..."
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Submit Enquiry
-                    </>
-                  )}
+                <Button type="submit" className="w-full bg-success hover:bg-success/90">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Send on WhatsApp
                 </Button>
               </form>
             </div>

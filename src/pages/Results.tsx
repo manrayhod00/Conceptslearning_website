@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { toppers } from "@/data/toppers";
 import { Button } from "@/components/ui/button";
 import { Trophy, TrendingUp, GraduationCap, MapPin, Medal } from "lucide-react";
 
@@ -85,16 +86,21 @@ export default function Results() {
           <div id="grade10" className="mb-14 animate-fade-in">
             <div className="flex items-center gap-2 mb-3">
               <Medal className="w-5 h-5 text-success" />
-              <span className="kicker">Board Exam</span>
+              <span className="kicker">This Year</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">Grade 10 CBSE Results · 2025-2026</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">Results · 2025-2026</h2>
             <p className="text-muted-foreground mb-6">
-              Maths &amp; Science scores from our Class 10 batch, sorted by total marks.
+              Class 10 CBSE Maths &amp; Science scores, and this year's JEE &amp; NEET results.
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Grade 10 table */}
-              <div className="overflow-x-auto overflow-y-auto max-h-80 rounded-xl border border-border animate-scale-in">
+              <div className="animate-scale-in">
+                <div className="flex items-center gap-2 mb-3">
+                  <Medal className="w-4 h-4 text-success" />
+                  <span className="kicker mb-0">Grade 10 CBSE</span>
+                </div>
+                <div className="overflow-x-auto overflow-y-auto max-h-80 rounded-xl border border-border">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-border bg-card/60 sticky top-0">
@@ -123,10 +129,34 @@ export default function Results() {
                     ))}
                   </tbody>
                 </table>
+                </div>
               </div>
 
-              {/* JEE toppers list — coming soon */}
-              <div />
+              {/* JEE / NEET toppers */}
+              <div className="animate-scale-in">
+                <div className="flex items-center gap-2 mb-3">
+                  <Trophy className="w-4 h-4 text-primary" />
+                  <span className="kicker mb-0">JEE &amp; NEET 2026</span>
+                </div>
+                <div className="space-y-3 overflow-y-auto max-h-80 pr-1">
+                  {toppers.map((topper) => (
+                    <div
+                      key={topper.name}
+                      className="glass-card p-4 flex items-start justify-between gap-4"
+                    >
+                      <div className="min-w-0">
+                        <h3 className="font-bold leading-tight">{topper.name}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">{topper.note}</p>
+                      </div>
+                      {topper.percentile && (
+                        <span className="score-badge flex-shrink-0 whitespace-nowrap">
+                          {topper.percentile} %ile
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 

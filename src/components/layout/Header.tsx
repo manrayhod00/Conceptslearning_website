@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LogoLight } from "@/components/LogoLight";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -24,9 +25,14 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="container">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+          {/* Logo — vector wordmark on light, the original artwork on dark */}
           <Link to="/" className="flex items-center group">
-            <img src={logo} alt="Concepts Coaching" className="h-14 w-auto rounded-lg" />
+            <LogoLight className="h-11 w-auto dark:hidden" />
+            <img
+              src={logo}
+              alt="Concepts Coaching"
+              className="hidden dark:block h-14 w-auto rounded-lg"
+            />
           </Link>
 
           {/* Desktop Nav */}
