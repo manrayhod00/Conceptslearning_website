@@ -4,19 +4,37 @@ import path from "path";
 import fs from "fs";
 import { componentTagger } from "lovable-tagger";
 
-// GitHub Pages has no server-side rewrite, so a hard reload / deep link on a
-// client-side route (e.g. /courses) returns the host's 404 page instead of the
-// app. Shipping 404.html as a copy of index.html makes Pages serve the SPA for
-// those URLs and lets React Router resolve the path.
-function spaFallback(): Plugin {
+// Every client-side route in App.tsx. Each one gets a real file on disk so
+// GitHub Pages answers a deep link or hard reload with 200 and the app shell,
+// instead of its own 404 page. 404.html covers anything not listed (and lets
+// React Router render the NotFound page).
+const ROUTES = [
+  "courses",
+  "faculty",
+  "results",
+  "mock-platform",
+  "contact",
+  "about-us",
+  "about",
+];
+
+// GitHub Pages has no server-side rewrite: without this, /courses returns the
+// host's 404 for both visitors and crawlers, even though the sitemap lists it.
+function spaRoutes(): Plugin {
   return {
-    name: "spa-404-fallback",
+    name: "spa-static-routes",
     apply: "build",
     closeBundle() {
       const dist = path.resolve(__dirname, "dist");
       const index = path.join(dist, "index.html");
-      if (fs.existsSync(index)) {
-        fs.copyFileSync(index, path.join(dist, "404.html"));
+      if (!fs.existsSync(index)) return;
+
+      fs.copyFileSync(index, path.join(dist, "404.html"));
+
+      for (const route of ROUTES) {
+        const dir = path.join(dist, route);
+        fs.mkdirSync(dir, { recursive: true });
+        fs.copyFileSync(index, path.join(dir, "index.html"));
       }
     },
   };
@@ -31,7 +49,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
-    spaFallback(),
+    spaRoutes(),
   ].filter(Boolean),
   resolve: {
     alias: {
