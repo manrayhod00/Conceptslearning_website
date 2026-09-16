@@ -14,9 +14,13 @@ import {
 } from "lucide-react";
 
 const toppers = [
-  { name: "Meeko", percentile: "99.82", exam: "JEE Main 2025", note: "Top performer • Consistent mocks" },
-  { name: "Bruno", percentile: "99.61", exam: "JEE Main 2025", note: "Strong accuracy • Fast solving" },
-  { name: "Pepper", percentile: "99.34", exam: "JEE Main 2025", note: "Big jump • Targeted revision" },
+  { name: "Abhiram", percentile: "98.8", exam: "JEE Main 2026 · NEET 2026", note: "NEET AIR 623 (GN) • AIIMS Bhubaneswar" },
+  { name: "Ranvir Chaudhary", percentile: "98.1", exam: "JEE Main 2026", note: "VNIT Nagpur" },
+  { name: "Judah", percentile: "96", exam: "JEE Main 2026", note: "RVCE Bengaluru • Computer Science" },
+  { name: "Teertha", percentile: "", exam: "JEE Main 2026", note: "RVCE Bengaluru" },
+  { name: "Aishwarya", percentile: "", exam: "JEE Main 2026", note: "SRM University" },
+  { name: "Sajeev", percentile: "", exam: "JEE Main 2026", note: "Manipal Institute of Technology" },
+  { name: "Avyukt", percentile: "", exam: "JEE Main 2026", note: "VIT Vellore" },
 ];
 
 interface Grade10Student {
@@ -143,7 +147,7 @@ export default function Home() {
                 <Trophy className="w-5 h-5 text-primary" />
                 <span className="kicker">Results</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold">JEE 2025 Toppers</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">JEE 2026 Toppers</h2>
               <p className="lead mt-2">Real scores. Real competition. Real confidence.</p>
             </div>
             <Button variant="ghost" asChild>
@@ -163,7 +167,9 @@ export default function Home() {
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="badge">{topper.exam}</span>
-                  <span className="score-badge">{topper.percentile} %ile</span>
+                  {topper.percentile && (
+                    <span className="score-badge">{topper.percentile} %ile</span>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{topper.name}</h3>
                 <p className="text-sm text-muted-foreground">{topper.note}</p>
@@ -182,7 +188,7 @@ export default function Home() {
                 <Medal className="w-5 h-5 text-success" />
                 <span className="kicker">Board Results</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold">Grade 10 Board Toppers · 2025</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">Grade 10 Board Toppers · 2025-2026</h2>
               <p className="lead mt-2">Outstanding scores in Maths &amp; Science from our CBSE batch.</p>
             </div>
             <Button variant="ghost" asChild>
@@ -215,7 +221,7 @@ export default function Home() {
                   )}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{student.name}</h3>
-                <p className="text-xs text-muted-foreground">Grade 10 · CBSE 2025</p>
+                <p className="text-xs text-muted-foreground">Grade 10 · CBSE 2025-2026</p>
               </div>
             ))}
           </div>

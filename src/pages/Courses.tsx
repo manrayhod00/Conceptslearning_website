@@ -205,7 +205,7 @@ export default function Courses() {
                   </Button>
                   <Button variant="outline" className="border-success text-success hover:bg-success/10" asChild>
                     <a
-                      href="https://wa.me/91XXXXXXXXXX?text=Hi%20Concepts%20Learning,%20Please%20share%20study%20material%20sample%20and%20course%20plan."
+                      href="https://wa.me/919810695338?text=Hi%20Concepts%20Learning,%20Please%20share%20study%20material%20sample%20and%20course%20plan."
                       target="_blank"
                       rel="noopener noreferrer"
                     >

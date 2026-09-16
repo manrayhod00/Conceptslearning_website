@@ -87,7 +87,7 @@ export default function Results() {
               <Medal className="w-5 h-5 text-success" />
               <span className="kicker">Board Exam</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">Grade 10 CBSE Results · 2025</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">Grade 10 CBSE Results · 2025-2026</h2>
             <p className="text-muted-foreground mb-6">
               Maths &amp; Science scores from our Class 10 batch, sorted by total marks.
             </p>

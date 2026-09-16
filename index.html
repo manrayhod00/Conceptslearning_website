@@ -17,6 +17,18 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ConceptsCoaching" />
     <meta name="twitter:image" content="https://www.conceptslearning.com/favicon.png" />
+
+    <!-- Apply the saved theme before first paint so there is no flash.
+         Light is the default; dark only when the visitor picked it. -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("theme") === "dark") {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>

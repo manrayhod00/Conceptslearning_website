@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -25,7 +26,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
-            <img src={logo} alt="Concepts Coaching" className="h-14 w-auto" />
+            <img src={logo} alt="Concepts Coaching" className="h-14 w-auto rounded-lg" />
           </Link>
 
           {/* Desktop Nav */}
@@ -47,8 +48,9 @@ export function Header() {
 
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
             <Button variant="ghost" size="sm" asChild>
-              <a href="tel:+91XXXXXXXXXX" className="gap-2">
+              <a href="tel:+919810695338" className="gap-2">
                 <Phone className="w-4 h-4" />
                 Call Now
               </a>
@@ -58,17 +60,21 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
-          >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile Controls */}
+          <div className="flex items-center gap-1 lg:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              className="p-2 rounded-lg hover:bg-secondary transition-colors"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -92,7 +98,7 @@ export function Header() {
             ))}
             <div className="flex gap-3 pt-4 border-t border-border mt-4">
               <Button variant="outline" className="flex-1" asChild>
-                <a href="tel:+91XXXXXXXXXX">Call Now</a>
+                <a href="tel:+919810695338">Call Now</a>
               </Button>
               <Button className="flex-1" asChild>
                 <Link to="/contact#enquiry" onClick={() => setMobileMenuOpen(false)}>

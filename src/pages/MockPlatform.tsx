@@ -2,13 +2,28 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { 
-  Monitor, 
-  Focus, 
-  BarChart3, 
-  Play,
+import {
+  Monitor,
+  Focus,
+  BarChart3,
   ImageIcon
 } from "lucide-react";
+
+import mockQuestionShot from "@/assets/mock-jee-question.png";
+import mockRankShot from "@/assets/mock-rank.png";
+
+const screenshots = [
+  {
+    src: mockQuestionShot,
+    alt: "Mock test question screen with exam-style question palette and timer",
+    caption: "Exam-style question screen with live timer and question palette",
+  },
+  {
+    src: mockRankShot,
+    alt: "Result screen showing total score, subject-wise split and performance charts",
+    caption: "Instant score, subject split and time-vs-marks analysis after the test",
+  },
+];
 
 const features = [
   {
@@ -67,45 +82,36 @@ export default function MockPlatform() {
             ))}
           </div>
 
-          {/* Demo Video & Screenshots */}
-          <div className="grid-2 gap-6">
-            {/* Demo Video */}
-            <div className="feature-card">
-              <div className="flex items-center gap-3 mb-4">
-                <Play className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-bold">Demo Video</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Watch how our platform imitates the JEE exam experience.
-              </p>
-              <div className="aspect-video bg-secondary/50 rounded-xl border border-border flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <Play className="w-16 h-16 mx-auto mb-3 opacity-50" />
-                  <p className="text-sm">Replace VIDEO_ID with your YouTube demo video</p>
-                  <p className="text-xs mt-1 opacity-60">
-                    Embed: youtube.com/embed/VIDEO_ID
-                  </p>
-                </div>
-              </div>
+          {/* Platform Screenshots */}
+          <div className="feature-card">
+            <div className="flex items-center gap-3 mb-4">
+              <ImageIcon className="w-6 h-6 text-primary" />
+              <h3 className="text-xl font-bold">Platform Screenshots</h3>
             </div>
-
-            {/* Screenshots */}
-            <div className="feature-card">
-              <div className="flex items-center gap-3 mb-4">
-                <ImageIcon className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-bold">Platform Screenshots</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                See how students experience our exam interface.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                <div className="aspect-video bg-secondary/50 rounded-lg border border-border flex items-center justify-center">
-                  <ImageIcon className="w-8 h-8 text-muted-foreground/50" />
-                </div>
-                <div className="aspect-video bg-secondary/50 rounded-lg border border-border flex items-center justify-center">
-                  <ImageIcon className="w-8 h-8 text-muted-foreground/50" />
-                </div>
-              </div>
+            <p className="text-muted-foreground mb-6">
+              See how students experience our exam interface.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {screenshots.map((shot) => (
+                <figure key={shot.src} className="m-0">
+                  <a
+                    href={shot.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl border border-border overflow-hidden bg-secondary/40 hover:border-primary/40 transition-colors"
+                  >
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      loading="lazy"
+                      className="w-full h-auto block"
+                    />
+                  </a>
+                  <figcaption className="text-sm text-muted-foreground mt-3">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </div>
 
@@ -121,7 +127,7 @@ export default function MockPlatform() {
               </Button>
               <Button variant="outline" className="border-success text-success hover:bg-success/10" asChild>
                 <a
-                  href="https://wa.me/91XXXXXXXXXX?text=Hi%20Concepts%20Learning,%20I%20want%20a%20demo%20of%20your%20mock%20test%20platform."
+                  href="https://wa.me/919810695338?text=Hi%20Concepts%20Learning,%20I%20want%20a%20demo%20of%20your%20mock%20test%20platform."
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -4,11 +4,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Concepts Learning - Modern Dark Theme Design System */
+/* Concepts Learning - Design System (light by default, dark via .dark class) */
 
 @layer base {
   :root {
-    /* Dark theme as default */
+    color-scheme: light;
+
+    /* Light theme - default */
+    --background: 210 40% 99%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Teal/Cyan accent - education & trust (darkened for contrast on light) */
+    --primary: 191 91% 33%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Green for WhatsApp/success */
+    --success: 142 70% 34%;
+    --success-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 42%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 89%;
+    --input: 0 0% 100%;
+    --ring: 191 91% 33%;
+
+    --radius: 1rem;
+
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(191 91% 33%), hsl(199 89% 41%));
+    --gradient-hero: linear-gradient(135deg, hsl(200 60% 97%) 0%, hsl(210 40% 100%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 99%) 100%);
+
+    /* Glow / elevation effects */
+    --glow-primary: 0 0 40px hsl(191 91% 40% / 0.12);
+    --glow-card: 0 6px 24px hsl(215 30% 40% / 0.10);
+
+    /* Sidebar */
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 191 91% 33%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 89%;
+    --sidebar-ring: 191 91% 33%;
+  }
+
+  .dark {
+    color-scheme: dark;
+
     --background: 222 47% 6%;
     --foreground: 210 40% 98%;
 
@@ -18,11 +78,9 @@
     --popover: 222 47% 9%;
     --popover-foreground: 210 40% 98%;
 
-    /* Cyan/Teal accent - education & trust */
     --primary: 187 92% 50%;
     --primary-foreground: 222 47% 6%;
 
-    /* Green for WhatsApp/success */
     --success: 142 76% 45%;
     --success-foreground: 0 0% 100%;
 
@@ -30,7 +88,7 @@
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 55%;
+    --muted-foreground: 215 20% 65%;
 
     --accent: 217 33% 17%;
     --accent-foreground: 210 40% 98%;
@@ -42,18 +100,13 @@
     --input: 217 33% 20%;
     --ring: 187 92% 50%;
 
-    --radius: 1rem;
-
-    /* Custom gradients */
     --gradient-primary: linear-gradient(135deg, hsl(187 92% 50%), hsl(199 89% 48%));
     --gradient-hero: linear-gradient(135deg, hsl(222 47% 8%) 0%, hsl(217 33% 12%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(222 47% 10%) 0%, hsl(222 47% 7%) 100%);
-    
-    /* Glow effects */
+
     --glow-primary: 0 0 60px hsl(187 92% 50% / 0.15);
     --glow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
 
-    /* Sidebar */
     --sidebar-background: 222 47% 8%;
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 187 92% 50%;
@@ -62,29 +115,6 @@
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217 33% 17%;
     --sidebar-ring: 187 92% 50%;
-  }
-
-  .dark {
-    /* Same as root - always dark */
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 187 92% 50%;
-    --primary-foreground: 222 47% 6%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 20%;
-    --ring: 187 92% 50%;
   }
 }
 
@@ -110,7 +140,7 @@
 @layer components {
   /* Glass morphism card */
   .glass-card {
-    @apply bg-card/80 backdrop-blur-xl border border-white/10 rounded-2xl;
+    @apply bg-card/80 backdrop-blur-xl border border-border rounded-2xl;
     box-shadow: var(--glow-card);
   }
 
